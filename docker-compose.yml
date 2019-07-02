@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  balena-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile.balena-cli
+
+    init: true
+
+    volumes:
+      - ./balena_cli_configs:/root/.balena
+      - ./ssh-keys:/root/.ssh
+      - ./scripts:/root/scripts
+      
+    stdin_open: true
+    tty: true
+
+
+
+
+    working_dir: /root
+
+    command: bash
