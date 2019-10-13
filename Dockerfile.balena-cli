@@ -1,3 +1,5 @@
-FROM node:stretch
+FROM node:buster
 RUN apt-get update && apt-get install -y rsync jq curl && rm -rf /var/lib/apt/lists/*
 RUN npm install balena-cli -g --production --unsafe-perm
+RUN curl -L https://raw.githubusercontent.com/balena-io/balena-cli/master/balena-completion.bash -o /etc/bash_completion.d/balena-completion.bash
+CMD ["/bin/bash"]

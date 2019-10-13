@@ -5,19 +5,17 @@ services:
       context: .
       dockerfile: Dockerfile.balena-cli
 
+    user: "node"
+    working_dir: /home/node
+
     init: true
 
     volumes:
-      - ./balena_cli_configs:/root/.balena
-      - ./ssh-keys:/root/.ssh
-      - ./scripts:/root/scripts
+      - ./balena_cli_configs:/home/node/.balena
+      - ./ssh-keys:/home/node/.ssh
+      - ./scripts:/home/node/scripts
       
     stdin_open: true
     tty: true
 
-
-
-
-    working_dir: /root
-
-    command: bash
+    command: "/bin/bash" 
