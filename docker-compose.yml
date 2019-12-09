@@ -8,6 +8,9 @@ services:
     user: "node"
     working_dir: /home/node
 
+    ports:
+      - 5353:5353
+
     init: true
 
     volumes:
@@ -18,5 +21,7 @@ services:
       
     stdin_open: true
     tty: true
+
+
 
     command: "/bin/bash" 
