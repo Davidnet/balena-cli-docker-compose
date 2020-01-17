@@ -25,3 +25,29 @@ services:
 
 
     command: "/bin/bash" 
+
+  balena-push:
+    build:
+      context: .
+      dockerfile: Dockerfile.balena-cli
+
+    user: "node"
+    working_dir: /home/node/staged-releases
+
+    # ports:
+    #   - 5353:5353
+
+    init: true
+
+    volumes:
+      # - ./balena_cli_configs:/home/node/.balena
+      # - ./ssh-keys:/home/node/.ssh
+      # - ./scripts:/home/node/scripts
+      - ./staged-releases:/home/node/staged-releases
+      
+    stdin_open: true
+    tty: true
+
+
+
+    command: "/bin/bash" 
